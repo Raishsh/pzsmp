@@ -1,0 +1,28 @@
+# Arquivos de Log e IDE
+*.log
+.idea/
+.vscode/
+*.iml
+*.nbproject/
+/nbproject/private/
+
+# Dependências do Node e Builds do Angular
+/pzsmp-frontend/node_modules/
+/pzsmp-frontend/dist/
+/pzsmp-frontend/.angular/
+/pzsmp-frontend/npm-debug.log*
+/pzsmp-frontend/coverage/
+
+# Builds e arquivos gerados pelo Maven/Java
+/pzsmp/target/
+/pzsmp/.mvn/
+/pzsmp/mvnw
+/pzsmp/mvnw.cmd
+/pzsmp/HELP.md
+
+# Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Dados do Docker
+/pgdata/
