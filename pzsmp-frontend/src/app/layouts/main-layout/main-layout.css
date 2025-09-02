@@ -1,0 +1,252 @@
+/* Container principal e área de conteúdo */
+.main-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+.content-area {
+  flex-grow: 1;
+  padding: 0px 40px 40px 40px;
+  overflow-y: auto;
+  background-color: var(--cor-fundo-app, #f8fafc);
+}
+
+/* O menu lateral (sidebar) */
+.sidebar {
+  width: 230px; /* Um pouco mais largo */
+  flex-shrink: 0;
+  background-color: var(--cor-sidebar, #fff);
+  color: var(--cor-texto-principal);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--cor-borda, #e2e8f0);
+  padding: 15px; /* Mais respiro geral */
+  box-sizing: border-box;
+}
+
+/* --- Cabeçalho do Menu Refinado --- */
+.sidebar-header {
+  padding: 20px 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.logo-icon {
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+}
+
+.header-title h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--cor-texto-principal, #1a202c);
+  line-height: 1.2; 
+}
+.header-title span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--cor-texto-secundario, #718096);
+  line-height: 1.2; 
+}
+
+
+/* --- Navegação Principal --- */
+.sidebar-nav {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-top: 15px;
+}
+
+.sidebar-nav a {
+  color: #4a5568; /* Cor de texto mais suave */
+  text-decoration: none;
+  padding: 12px 15px;
+  margin: 5px 1px;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar-nav a:hover {
+  background-color: #f1f5f9;
+  color: #1a202c;
+}
+
+.sidebar-nav a.active {
+  background-color: rgb(50, 50, 50);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(50, 50, 50, 0.2);
+}
+
+.sidebar-nav i {
+  width: 20px; /* Alinha os ícones */
+  text-align: center;
+}
+
+
+/* --- Rodapé do Menu Refinado --- */
+.sidebar-bottom {
+  flex-shrink: 0;
+  padding-top: 15px;
+}
+
+.sidebar-actions {
+  padding: 10px 0; /* Apenas espaçamento vertical */
+}
+
+.btn-fechar-caixa {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: var(--cor-erro, #dc3545);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.25);
+}
+.btn-fechar-caixa:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(220, 53, 69, 0.3);
+}
+
+/* --- Bloco de Perfil de Usuário no Rodapé --- */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 10px;
+  border-top: 1px solid var(--cor-borda, #e2e8f0);
+  margin-top: 15px;
+}
+
+.user-avatar {
+  font-size: 2rem; /* Tamanho do ícone de usuário */
+  color: #718096;
+}
+
+.user-info {
+  flex-grow: 1;
+}
+.user-info span {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.btn-logout {
+  color: #718096;
+  font-size: 1.2rem;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-logout:hover {
+  background-color: #f1f5f9;
+  color: #1a202c;
+}
+
+/* ============================================== */
+/* CABEÇALHO DA ÁREA DE CONTEÚDO PRINCIPAL        */
+/* ============================================== */
+
+
+
+/* O user-profile agora está no cabeçalho, então ajustamos seu estilo */
+.user-profile {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 0px 5px;
+  border-radius: 8px;
+  border: 1px solid var(--cor-borda, #e2e8f0);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  margin-left: auto;
+  margin-top: auto;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: #333;
+}
+
+.user-info i {
+  font-size: 1.5rem; /* Ícone de usuário um pouco maior */
+  color: #718096;
+}
+
+.btn-logout {
+  color: #718096;
+  font-size: 1.1rem;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-logout:hover {
+  background-color: #f1f5f9;
+  color: #1a202c;
+}
+
+.content-header {
+  display: flex;
+ 
+  align-items: center; 
+  width: 100%;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--cor-borda, #e2e8f0);
+}
+
+/* NOVO BLOCO PARA AGRUPAR DATA E HORA */
+.header-info-left {
+  display: flex;
+  align-items: left;
+  gap: 15px; /* Espaço entre a data e a hora */
+  
+}
+
+.header-datetime {
+  display: flex;
+  align-items: left; /* Alinha o texto na base */
+  gap: 10px;
+  padding-right: 15px;
+  /* Borda vertical para separar a data da hora */
+  border-right: 2px solid var(--cor-borda, #e2e8f0);
+  margin-right: auto;
+}
+
+.header-datetime .date {
+  font-size: 0.95rem; /* Um pouco maior */
+  font-weight: 500;
+  color: var(--cor-texto-secundario, #718096);
+  text-transform: capitalize;
+}
+
+.header-datetime .time {
+  font-size: 1.2rem; /* Tamanho mais sutil */
+  font-weight: 600;
+  color: var(--cor-texto-principal, #1a202c);
+  line-height: 1;
+}
+
+/* Remova o estilo antigo do .user-profile que estava no rodapé do sidebar */
+/* Procure e apague as regras antigas para .user-profile e seus filhos no seu CSS */

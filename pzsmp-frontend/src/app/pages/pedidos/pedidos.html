@@ -1,0 +1,71 @@
+<div class="page-header">
+  <div class="header-text">
+    <h1>Pedidos em Andamento</h1>
+    <p>Visualize e gerencie todos os pedidos ativos do restaurante.</p>
+  </div>
+</div>
+
+<div *ngIf="pedidos && pedidos.length > 0">
+  <div class="pedidos-grid">
+    <div *ngFor="let pedido of pedidos" class="card pedido-card">
+      <div class="card-header">
+        <h3>Pedido Nº {{ pedido.idPedido }}</h3>
+        <div class="tags">
+          <span class="tag" *ngIf="pedido.numeroMesa">Mesa {{ pedido.numeroMesa }}</span>
+          <span class="tag" *ngIf="pedido.nomeClienteTemporario && !pedido.numeroMesa">Balcão</span>
+          <span class="tag status">{{ pedido.status }}</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul class="itens-lista">
+          <li *ngFor="let item of pedido.itens">
+            <span>{{ item.quantidade }}x {{ item.nomeProduto }}</span>
+            <span>{{ item.precoUnitario | currency:'BRL' }}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span>Cliente: {{ pedido.cliente?.nome || pedido.nomeClienteTemporario || 'Não identificado' }}</span>
+        <strong>Total: {{ pedido.total | currency:'BRL' }}</strong>
+      </div>
+      <div class="card-actions">
+        <button *ngIf="pedido.status === 'PREPARANDO'" class="btn btn-sucesso" (click)="mudarStatus(pedido.idPedido, 'PRONTO')">
+          Marcar como Pronto
+        </button>
+        <div *ngIf="pedido.status === 'PRONTO'">
+          <button *ngIf="pedido.numeroMesa" class="btn btn-info" (click)="fecharPedido(pedido.idPedido)">
+            Fechar Pedido
+          </button>
+          <button *ngIf="!pedido.numeroMesa" class="btn btn-info" (click)="mudarStatus(pedido.idPedido, 'ENTREGUE')">
+            Finalizar Entrega
+          </button>
+        </div>
+        <button class="btn btn-primario" [routerLink]="['/app/pagamento', pedido.idPedido]">
+          Ir para Pagamento
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!pedidos || pedidos.length === 0" class="empty-state">
+  <div class="empty-state-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+      <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+    </svg>
+  </div>
+  <h2>Tudo tranquilo por aqui</h2>
+  <p>Ainda não há pedidos em andamento. Inicie uma nova venda.</p>
+  
+  <div class="quick-actions">
+    <button class="btn-action-card" [routerLink]="['/app/mesas']">
+      <span>Pedido para Mesa</span>
+    </button>
+    <button class="btn-action-card" [routerLink]="['/app/entregas']">
+      <span>Pedido para Entrega</span>
+    </button>
+    <button class="btn-action-card" [routerLink]="['/app/balcao']">
+      <span>Pedido de Balcão</span>
+    </button>
+  </div>
+</div>

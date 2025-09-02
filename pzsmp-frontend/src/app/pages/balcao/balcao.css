@@ -1,0 +1,217 @@
+/* =================================================================== */
+/* CSS COMPLETO E CONSOLIDADO - PÁGINA BALCÃO                        */
+/* =================================================================== */
+
+
+/* Estilos para o Cabeçalho da Página
+------------------------------------------------------------------- */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--cor-borda, #e2e8f0);
+}
+
+.header-text h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--cor-texto-principal, #1a202c);
+  margin: 0 0 8px 0;
+}
+
+.header-text p {
+  font-size: 1rem;
+  color: var(--cor-texto-secundario, #718096);
+  margin: 0;
+}
+
+
+/* Container Principal do Pedido
+------------------------------------------------------------------- */
+.novo-pedido-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+
+/* Colunas e Títulos Internos
+------------------------------------------------------------------- */
+.cardapio-coluna {
+  border-right: 1px solid var(--cor-borda, #e2e8f0);
+  padding-right: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardapio-coluna h4, .pedido-coluna h4 {
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+
+/* Filtros do Cardápio (Estilo "Chips")
+------------------------------------------------------------------- */
+.filtros-cardapio {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-bottom: 20px;
+}
+
+.btn-filtro {
+  border: 1px solid var(--cor-borda, #e2e8f0);
+  background-color: #ffffff;
+  border-radius: 20px; /* Bordas bem arredondadas para o formato de pílula */
+  
+  /* Espaçamento interno para conforto visual */
+  padding: 10px 15px;
+  
+  /* Tipografia */
+  color: var(--cor-texto-secundario, #4a5568);
+  font-size: 0.9rem;
+  font-weight: 600; /* Um pouco mais forte para dar presença */
+  
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  
+  /* Sombra sutil para o efeito de "flutuar" */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.btn-filtro:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-color: #c1c9d4;
+}
+
+.btn-filtro.active {
+  /* Estilo de destaque para o chip ativo */
+  background-color: rgb(50, 50, 50); /* Cor azul primária */
+  color: white;
+  border-color: var(--cor-primaria, #007bff); /* Borda da mesma cor */
+  
+  /* Sombra mais forte para destacar o chip ativo */
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.25);
+  transform: translateY(-2px); /* Mantém o chip elevado */
+}
+
+/* Lista de Produtos do Cardápio
+------------------------------------------------------------------- */
+.lista-produtos-cardapio {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.item-cardapio {
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.item-cardapio:hover {
+  background-color: var(--cor-fundo, #f8fafc);
+}
+
+
+/* Coluna do Pedido Atual
+------------------------------------------------------------------- */
+.form-group {
+  margin-bottom: 25px; /* Espaço abaixo do campo de nome */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.form-group input{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--cor-borda, #cbd5e0);
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+.item-pedido-atual {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Alinha o texto e o botão verticalmente */
+  padding: 10px 0;
+  border-bottom: 1px solid var(--cor-borda, #e2e8f0);
+}
+
+.item-pedido-atual .item-info {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1; /* Faz esta div ocupar o máximo de espaço */
+}
+
+
+/* Estilo para o botão de remover item */
+.btn-remover-item {
+  background: none;
+  border: none;
+  color: var(--cor-texto-secundario, #a0aec0);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  margin-left: 15px; /* Espaço entre o preço e o botão */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-remover-item:hover {
+  background-color: #f8d7da; /* Fundo vermelho claro */
+  color: var(--cor-erro, #dc3545); /* Ícone vermelho */
+}
+.itens-container hr {
+    margin: 15px 0;
+    border: none;
+    border-top: 1px solid var(--cor-borda, #e2e8f0);
+}
+.pedido-vazio-mensagem {
+    color: #888;
+    text-align: center;
+    padding: 20px 0;
+}
+.total-pedido {
+  text-align: right;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.btn-finalizar-pedido {
+  width: 100%;
+  margin-top: 25px;
+  background-color: rgb(50, 50, 50);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-finalizar-pedido:hover {
+    background-color: rgb(80, 80, 80);
+}

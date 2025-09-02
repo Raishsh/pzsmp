@@ -1,0 +1,249 @@
+/* =================================================================== */
+/* CSS COMPLETO E CONSOLIDADO - PÁGINA ENTREGAS                      */
+/* =================================================================== */
+
+
+/* Estilos para o Cabeçalho da Página
+------------------------------------------------------------------- */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--cor-borda, #e2e8f0);
+}
+
+.header-text h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--cor-texto-principal, #1a202c);
+  margin: 0 0 8px 0;
+}
+
+.header-text p {
+  font-size: 1rem;
+  color: var(--cor-texto-secundario, #718096);
+  margin: 0;
+}
+
+.header-actions .btn-primario {
+  background-color: rgb(50, 50, 50);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: var(--border-radius, 8px);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.header-actions .btn-primario:hover {
+  background-color: rgb(80, 80, 80);
+}
+
+
+/* Estilos para o Card de Etapas
+------------------------------------------------------------------- */
+.card-etapa {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  margin-bottom: 30px;
+}
+
+.card-etapa h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+
+/* Estilos para a Busca de Cliente
+------------------------------------------------------------------- */
+.busca-cliente {
+  position: relative;
+}
+.busca-cliente input {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+.resultados-busca {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  z-index: 100;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.resultado-item {
+  padding: 15px;
+  cursor: pointer;
+}
+.resultado-item:hover {
+  background-color: #f0f0f0;
+}
+
+
+/* Estilos para o Cliente Selecionado e Detalhes
+------------------------------------------------------------------- */
+.cliente-selecionado-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn-trocar-cliente {
+    background: none;
+    border: none;
+    color: var(--cor-primaria, #007bff);
+    cursor: pointer;
+    font-weight: 600;
+}
+.detalhes-cliente {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+  border: 1px solid #e9ecef;
+}
+.detalhes-cliente p {
+    margin: 0 0 8px 0;
+}
+.detalhes-cliente p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Estilos para a Seção do Pedido
+------------------------------------------------------------------- */
+.separador-secao {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 30px 0;
+}
+.novo-pedido-view { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 30px; 
+}
+.cardapio-coluna h4, .pedido-coluna h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+.cardapio-coluna { 
+  border-right: 1px solid #eee; 
+  padding-right: 30px; 
+  display: flex; 
+  flex-direction: column; 
+}
+.filtros-cardapio { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 8px; 
+  margin-bottom: 15px; 
+}
+.filtros-cardapio button { 
+  padding: 8px 15px;
+  font-size: 0.85rem; 
+  border: 1px solid #ddd; 
+  border-radius: 20px; 
+  cursor: pointer;
+  background-color: #f8f8f8;
+}
+.filtros-cardapio button.active { 
+  background-color: #333; 
+  color: white; 
+}
+.lista-produtos-cardapio { 
+  max-height: 350px; 
+  overflow-y: auto; 
+}
+.item-cardapio { 
+  padding: 12px; 
+  cursor: pointer; 
+  border-radius: 5px; 
+  margin-bottom: 5px;
+}
+.item-cardapio:hover { 
+  background-color: #f0f0f0; 
+}
+.item-pedido-atual { 
+  display: flex; 
+  justify-content: space-between; 
+  padding: 10px 0; 
+}
+.pedido-vazio-mensagem {
+    color: #888;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+.total-pedido { 
+  text-align: right; 
+  font-size: 1.2rem; 
+  margin-top: 15px; 
+  font-weight: bold;
+}
+.btn-finalizar-pedido { 
+  width: 100%; 
+  padding: 15px;
+  background-color: var(--cor-sucesso, #28a745); 
+  color: white; 
+  border: none; 
+  border-radius: 8px; 
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer; 
+  margin-top: 20px; 
+}
+
+/* Estilos para a lista de itens do pedido atual */
+.item-pedido-atual {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Alinha o texto e o botão verticalmente */
+  padding: 10px 0;
+  border-bottom: 1px solid var(--cor-borda, #e2e8f0);
+}
+
+.item-pedido-atual .item-info {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1; /* Faz esta div ocupar o máximo de espaço */
+}
+
+
+/* Estilo para o botão de remover item */
+.btn-remover-item {
+  background: none;
+  border: none;
+  color: var(--cor-texto-secundario, #a0aec0);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  margin-left: 15px; /* Espaço entre o preço e o botão */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-remover-item:hover {
+  background-color: #f8d7da; /* Fundo vermelho claro */
+  color: var(--cor-erro, #dc3545); /* Ícone vermelho */
+}

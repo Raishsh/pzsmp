@@ -1,0 +1,105 @@
+<div class="gerenciar-funcionarios">
+
+  <div class="page-header">
+    <div class="header-text">
+      <h1>Funcionários</h1>
+      <p>Gerencie os funcionários e seus acessos ao sistema.</p>
+    </div>
+    <div class="header-actions" *ngIf="modo === 'lista'">
+      <button class="btn btn-primario" (click)="irParaModoCadastro()">
+        + Cadastrar Novo Funcionário
+      </button>
+    </div>
+  </div>
+
+  <div class="content-card" *ngIf="modo === 'lista'">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Cargo</th>
+          <th>Telefone</th>
+          <th>Login</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let funcionario of listaFuncionarios">
+          <td>{{ funcionario.id }}</td>
+          <td>{{ funcionario.nome }}</td>
+          <td>{{ funcionario.cargo }}</td>
+          <td>{{ funcionario.telefone }}</td>
+          <td>{{ funcionario.login }}</td>
+          <td class="acoes-cell">
+        <button class="btn-acao btn-aviso" (click)="abrirModalEdicao(funcionario)">Editar</button>
+        <button class="btn-acao btn-erro" (click)="excluir(funcionario.id)">Excluir</button>
+      </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal-overlay" *ngIf="funcionarioEmEdicao">
+  <div class="modal-content">
+    <h2>Editar Funcionário</h2>
+    <form (ngSubmit)="salvarEdicao()">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Nome Completo</label>
+          <input type="text" [(ngModel)]="funcionarioEmEdicao.nome" name="edit-nome" required>
+        </div>
+        <div class="form-group">
+          <label>Telefone</label>
+          <input type="text" [(ngModel)]="funcionarioEmEdicao.telefone" name="edit-telefone">
+        </div>
+        <div class="form-group">
+          <label>Cargo</label>
+          <input type="text" [(ngModel)]="funcionarioEmEdicao.cargo" name="edit-cargo" required>
+        </div>
+        <div class="form-group">
+          <label>Nova Senha (deixe em branco para não alterar)</label>
+          <input type="password" [(ngModel)]="funcionarioEmEdicao.senha" name="edit-senha">
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secundario" (click)="fecharModalEdicao()">Cancelar</button>
+        <button type="submit" class="btn btn-primario">Salvar Alterações</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+  <div class="content-card" *ngIf="modo === 'cadastro'">
+    <h2>Cadastrar Novo Funcionário</h2>
+    <form (ngSubmit)="cadastrarFuncionario()">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="nome">Nome Completo</label>
+          <input id="nome" type="text" [(ngModel)]="novoFuncionario.nome" name="nome" required>
+        </div>
+        <div class="form-group">
+          <label for="telefone">Telefone</label>
+          <input id="telefone" type="text" [(ngModel)]="novoFuncionario.telefone" name="telefone">
+        </div>
+        <div class="form-group">
+          <label for="cargo">Cargo</label>
+          <input id="cargo" type="text" [(ngModel)]="novoFuncionario.cargo" name="cargo" required>
+        </div>
+        <div class="form-group">
+          <label for="login">Login de Acesso</label>
+          <input id="login" type="text" [(ngModel)]="novoFuncionario.login" name="login" required>
+        </div>
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <input id="senha" type="password" [(ngModel)]="novoFuncionario.senha" name="senha" required>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn-cancelar" (click)="voltarParaLista()">Cancelar</button>
+        <button type="submit" class="btn-salvar">Salvar Funcionário</button>
+      </div>
+    </form>
+  </div>
+
+</div>

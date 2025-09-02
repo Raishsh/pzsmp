@@ -1,0 +1,230 @@
+/* =================================================================== */
+/* CSS COMPLETO E CONSOLIDADO - PÁGINA FUNCIONÁRIOS                  */
+/* =================================================================== */
+
+/* Estilos para o Cabeçalho da Página
+------------------------------------------------------------------- */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--cor-borda, #e2e8f0);
+}
+
+.header-text h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--cor-texto-principal, #1a202c);
+  margin: 0 0 8px 0;
+}
+
+.header-text p {
+  font-size: 1rem;
+  color: var(--cor-texto-secundario, #718096);
+  margin: 0;
+}
+
+.header-actions .btn-primario {
+  background-color: rgb(50, 50, 50);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.header-actions .btn-primario:hover {
+  background-color: rgb(80, 80, 80);
+}
+
+
+/* Card de Conteúdo (para Lista e Formulário)
+------------------------------------------------------------------- */
+.content-card {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+.content-card h2 {
+  margin-top: 0;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+}
+
+
+/* Estilo Aprimorado para a Tabela de Funcionários
+------------------------------------------------------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px; /* Mais espaçamento para melhor leitura */
+  border-bottom: 1px solid #e2e8f0; /* Linha sutil */
+}
+
+thead th {
+  color: #718096;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: transparent; /* Cabeçalho limpo */
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f8fafc; /* Efeito "zebra" para facilitar a leitura */
+}
+
+tbody tr:hover {
+  background-color: #f0f4f8; /* Destaque no hover */
+}
+
+
+/* Estilos para o Formulário de Cadastro
+------------------------------------------------------------------- */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.form-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.form-actions button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-cancelar {
+  background-color: #e2e8f0;
+  color: #2d3748;
+}
+
+.btn-salvar {
+  background-color: rgb(50, 50, 50);
+  color: white;
+}
+.acoes-cell {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-acao {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.btn-aviso {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.btn-erro {
+  background-color: #dc3545;
+}
+
+
+/* Estilos para o Modal (se ainda não tiver) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.modal-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.btn-primario {
+  background-color: rgb(50, 50, 50);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-primario:hover {
+  background-color: rgb(80, 80, 80);
+}
+
+.btn-secundario {
+  background-color: #e2e8f0;
+  color: #2d3748;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.btn-secundario:hover {
+  background-color: #cbd5e0;
+}

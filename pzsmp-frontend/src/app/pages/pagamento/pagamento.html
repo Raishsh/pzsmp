@@ -1,0 +1,56 @@
+<div class="page-header">
+  <div class="header-text">
+    <h1>Pagamento</h1>
+    <p>Confira os detalhes do pedido e selecione o método de pagamento.</p>
+  </div>
+</div>
+
+<div class="card" *ngIf="pedido">
+  
+  <div class="detalhes-pedido">
+    <h2>Detalhes do Pedido #{{ pedido.idPedido }}</h2>
+    <ul>
+      <li *ngFor="let item of pedido.itens">
+        <span>{{ item.quantidade }}x {{ item.nomeProduto }}</span>
+        <span>{{ (item.precoUnitario * item.quantidade) | currency:'BRL' }}</span>
+      </li>
+    </ul>
+    <div class="total">
+      <span>Total</span>
+      <strong>{{ pedido.total | currency:'BRL' }}</strong>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="metodo-pagamento">
+    <h2>Método de Pagamento</h2>
+    <div class="opcoes-pagamento">
+      <label class="opcao-radio">
+        <input type="radio" name="metodo" value="DINHEIRO" [(ngModel)]="metodoPagamento">
+        <span class="radio-custom"></span>
+        <span class="radio-label">Dinheiro</span>
+      </label>
+      <label class="opcao-radio">
+        <input type="radio" name="metodo" value="PIX" [(ngModel)]="metodoPagamento">
+        <span class="radio-custom"></span>
+        <span class="radio-label">Pix</span>
+      </label>
+      <label class="opcao-radio">
+        <input type="radio" name="metodo" value="CARTAO_CREDITO" [(ngModel)]="metodoPagamento">
+        <span class="radio-custom"></span>
+        <span class="radio-label">Cartão de Crédito</span>
+      </label>
+      <label class="opcao-radio">
+        <input type="radio" name="metodo" value="CARTAO_DEBITO" [(ngModel)]="metodoPagamento">
+        <span class="radio-custom"></span>
+        <span class="radio-label">Cartão de Débito</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button class="btn-confirmar" (click)="confirmarPagamento()">Confirmar Pagamento</button>
+  </div>
+
+</div>

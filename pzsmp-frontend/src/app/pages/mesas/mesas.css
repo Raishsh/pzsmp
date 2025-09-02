@@ -1,0 +1,302 @@
+/* =================================================================== */
+/* CSS COMPLETO E CONSOLIDADO - PÁGINA MESAS                         */
+/* =================================================================== */
+
+
+/* Estilos para o Cabeçalho da Página
+------------------------------------------------------------------- */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--cor-borda, #e2e8f0);
+}
+
+.header-text h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--cor-texto-principal, #1a202c);
+  margin: 0 0 8px 0;
+}
+
+.header-text p {
+  font-size: 1rem;
+  color: var(--cor-texto-secundario, #718096);
+  margin: 0;
+}
+
+
+
+/* Estilos para a Grade de Mesas
+------------------------------------------------------------------- */
+.mesas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 25px;
+}
+
+.mesa-card {
+  border: 2px solid;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.mesa-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.mesa-numero {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.mesa-status {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.mesa-capacidade {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: #555;
+}
+
+/* Cores para cada status */
+.status-livre {
+  border-color: #28a745;
+  background-color: #e9f7ef;
+  color: #155724;
+}
+
+.status-ocupada {
+  border-color: #dc3545;
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-reservada {
+  border-color: #ffc107;
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+/* Estilos para o Modal
+------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content-large {
+  position: relative;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 900px;
+  min-height: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-fechar {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #888;
+}
+
+.modal-content-large h2 {
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.modal-nav {
+  display: flex;
+  gap: 10px;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 20px;
+}
+
+.modal-nav button {
+  padding: 10px 15px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+}
+
+.modal-nav button.active {
+  border-bottom-color: #007bff;
+  color: #007bff;
+}
+
+.modal-body {
+  flex-grow: 1;
+}
+
+.novo-pedido-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  height: 100%;
+}
+
+.cardapio-coluna {
+  border-right: 1px solid #eee;
+  padding-right: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Demais estilos para formulários, listas, etc. dentro do modal */
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.filtros-cardapio {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+.filtros-cardapio button {
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.filtros-cardapio button.active {
+  background-color: #333;
+  color: white;
+}
+
+.lista-produtos-cardapio {
+  max-height: 300px;
+  overflow-y: auto;
+}
+.item-cardapio {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.item-cardapio:hover {
+  background-color: #f0f0f0;
+}
+/* Estilos para a lista de itens do pedido atual */
+.item-pedido-atual {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Alinha o texto e o botão verticalmente */
+  padding: 10px 0;
+  border-bottom: 1px solid var(--cor-borda, #e2e8f0);
+}
+
+.item-pedido-atual .item-info {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1; /* Faz esta div ocupar o máximo de espaço */
+}
+
+
+/* Estilo para o botão de remover item */
+.btn-remover-item {
+  background: none;
+  border: none;
+  color: var(--cor-texto-secundario, #a0aec0);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  margin-left: 15px; /* Espaço entre o preço e o botão */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-remover-item:hover {
+  background-color: #f8d7da; /* Fundo vermelho claro */
+  color: var(--cor-erro, #dc3545); /* Ícone vermelho */
+}
+.total-pedido {
+  text-align: right;
+  font-size: 1.2rem;
+  margin-top: 15px;
+}
+.btn-finalizar-pedido, .btn-salvar {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.pedido-detalhado {
+  border: 1px solid #eee;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+.pedido-detalhado h4 {
+  margin-top: 0;
+}
+.pedido-detalhado ul {
+  list-style-type: none;
+  padding: 0;
+}
+.pedido-detalhado li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+.total-geral-pedido {
+  display: block;
+  text-align: right;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}

@@ -1,0 +1,159 @@
+/* =================================================================== */
+/* CSS COMPLETO E CONSOLIDADO - PÁGINA RELATÓRIOS                    */
+/* =================================================================== */
+
+/* Estilos para o Cabeçalho da Página
+------------------------------------------------------------------- */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--cor-borda, #e2e8f0);
+}
+
+.header-text h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--cor-texto-principal, #1a202c);
+  margin: 0 0 8px 0;
+}
+
+.header-text p {
+  font-size: 1rem;
+  color: var(--cor-texto-secundario, #718096);
+  margin: 0;
+}
+
+.header-actions .btn-secundario {
+  background-color: #e2e8f0;
+  color: #2d3748;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.header-actions .btn-secundario:hover {
+  background-color: #cbd5e0;
+}
+
+/* Card de Conteúdo
+------------------------------------------------------------------- */
+.card {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+/* Tabela de Relatórios
+------------------------------------------------------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  padding: 16px;
+  text-align: left;
+  color: #718096;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+tbody td {
+  padding: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: middle;
+  font-weight: 500;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+tbody tr:hover {
+  background-color: #f0f4f8;
+}
+
+.text-center {
+  text-align: center;
+  color: var(--cor-texto-secundario, #a0aec0);
+  padding: 40px 0;
+  font-style: italic;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.filtros-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: var(--cor-fundo, #f8fafc);
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--cor-borda, #e2e8f0);
+}
+
+.filtros-header .form-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filtros-header label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.filtros-header input[type="date"] {
+  padding: 8px;
+  border: 1px solid var(--cor-borda, #cbd5e0);
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.btn-buscar, .btn-limpar {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-buscar {
+  background-color: rgb(50, 50, 50);
+  color: white;
+}
+.btn-buscar:hover {
+  background-color: rgb(80, 80, 80);
+}
+
+.btn-limpar {
+  background-color: #e2e8f0;
+  color: #2d3748;
+}
+.btn-limpar:hover {
+  background-color: #cbd5e0;
+}
+
+tbody tr.linha-clicavel {
+  cursor: pointer;
+}
+tbody tr.linha-clicavel:hover {
+  background-color: #f0f4f8;
+}

@@ -1,0 +1,35 @@
+/* Importa a fonte principal que usaremos em toda a aplicação */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* DEFINIÇÃO DE VARIÁVEIS GLOBAIS (NOSSO DESIGN SYSTEM)
+  Usar variáveis torna a manutenção do design muito mais fácil.
+  Se quiser mudar uma cor no futuro, só precisa de a mudar aqui.
+*/
+:root {
+  --cor-primaria: #0052cc; /* Azul para ações principais e destaques */
+  --cor-fundo: #f4f7f6;      /* Um cinza muito claro para o fundo das páginas */
+  --cor-sidebar: #ffffff;   /* Fundo branco para o menu lateral */
+  --cor-texto-principal: #2d3748;
+  --cor-texto-secundario: #718096;
+  --cor-borda: #e2e8f0;
+  --cor-sucesso: #28a745;
+  --cor-erro: #dc3545;
+  --cor-aviso: #ffc107;
+  --sombra-card: 0 4px 15px rgba(0, 0, 0, 0.08);
+  --border-radius: 8px;
+}
+
+/* Estilos base para toda a aplicação */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto-principal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove o anel de foco padrão do navegador para um visual mais limpo */
+*:focus {
+  outline: none;
+}

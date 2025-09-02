@@ -1,0 +1,89 @@
+<div class="entrega-container">
+  <div class="page-header">
+    <div class="header-text">
+      <h1>Novo Pedido para Entrega</h1>
+      <p>Busque um cliente por nome ou telefone para iniciar um pedido.</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-primario" [routerLink]="['/app/cadastro-cliente']">
+        <i class="fas fa-plus"></i>
+        <span> Cadastrar Novo Cliente  </span>
+      </button>
+    </div>
+  </div>
+
+  <div class="card-etapa" *ngIf="!clienteSelecionado">
+    <h2>Buscar Cliente</h2>
+    <div class="busca-cliente">
+      <input type="text" placeholder="Digite o nome ou telefone do cliente..." 
+             [(ngModel)]="termoBusca" (keyup)="buscarClientes()">
+      
+      <div class="resultados-busca" *ngIf="clientesEncontrados.length > 0">
+        <div *ngFor="let cliente of clientesEncontrados" class="resultado-item" (click)="selecionarCliente(cliente)">
+          <strong>{{ cliente.nome }}</strong> - {{ cliente.telefone }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-etapa" *ngIf="clienteSelecionado">
+    <div class="cliente-selecionado-header">
+      <h2>Detalhes do Pedido</h2>
+      <button class="btn-trocar-cliente" (click)="limparCliente()">Trocar Cliente</button>
+    </div>
+    
+    <div class="detalhes-cliente">
+      <p><strong>Cliente:</strong> {{ clienteSelecionado.nome }}</p>
+      <p><strong>Telefone:</strong> {{ clienteSelecionado.telefone }}</p>
+      <p><strong>Endereço:</strong> 
+        <span *ngIf="clienteSelecionado.endereco">
+          {{ clienteSelecionado.endereco.rua }}, {{ clienteSelecionado.endereco.numero }} - {{ clienteSelecionado.endereco.bairro }}
+        </span>
+        <span *ngIf="!clienteSelecionado.endereco">Nenhum endereço cadastrado.</span>
+      </p>
+    </div>
+
+    <hr class="separador-secao">
+
+    <div class="novo-pedido-view">
+      <div class="cardapio-coluna">
+        <h4>Cardápio</h4>
+        <div class="filtros-cardapio">
+          <button *ngFor="let tipo of tiposDeProduto" (click)="filtrarCardapio(tipo)"
+                  [class.active]="filtroCardapioAtual === tipo">
+            {{ formatarNomeFiltro(tipo) }}
+          </button>
+        </div>
+        <div class="lista-produtos-cardapio">
+          <div class="item-cardapio" *ngFor="let produto of cardapioFiltrado" (click)="adicionarAoPedido(produto)">
+            {{ produto.nome }} - R$ {{ produto.preco.toFixed(2) }}
+          </div>
+        </div>
+      </div>
+      
+      <div class="pedido-coluna">
+        <h4>Pedido Atual</h4>
+        <div *ngIf="novoPedidoItens.length > 0; else pedidoVazio">
+
+          <div *ngFor="let item of novoPedidoItens" class="item-pedido-atual">
+            <div class="item-info">
+              <span>{{ item.quantidade }}x {{ item.produto.nome }}</span>
+              <span>R$ {{ (item.produto.preco * item.quantidade).toFixed(2) }}</span>
+            </div>
+            <button class="btn-remover-item" (click)="removerDoPedido(item)" title="Remover Item">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+          <hr>
+          <div class="total-pedido">
+            <strong>Total: R$ {{ totalNovoPedido.toFixed(2) }}</strong>
+          </div>
+        </div>
+        <ng-template #pedidoVazio>
+            <p class="pedido-vazio-mensagem">Clique nos itens do cardápio para adicionar.</p>
+        </ng-template>
+        <button class="btn-finalizar-pedido" (click)="finalizarPedido()">Finalizar Pedido</button>
+      </div>
+    </div>
+  </div>
+</div>

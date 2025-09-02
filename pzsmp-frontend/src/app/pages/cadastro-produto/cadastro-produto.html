@@ -1,0 +1,60 @@
+<!-- Cabeçalho Padrão -->
+<div class="page-header">
+  <div class="header-text">
+    <h1>Cadastrar Novo Produto</h1>
+    <p>Preencha os dados abaixo para adicionar um novo item ao cardápio.</p>
+  </div>
+  <div class="header-actions">
+    <!-- Não há ações no cabeçalho desta página -->
+  </div>
+</div>
+
+<!-- Card de Conteúdo para o Formulário -->
+<div class="content-card">
+  <form (ngSubmit)="cadastrar()">
+    <!-- Grid para organizar os campos do formulário -->
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="nome">Nome do Produto</label>
+        <input type="text" id="nome" [(ngModel)]="produto.nome" name="nome" required>
+      </div>
+
+      <div class="form-group">
+        <label for="preco">Preço</label>
+        <input type="number" id="preco" [(ngModel)]="produto.preco" name="preco" required>
+      </div>
+
+      <div class="form-group">
+        <label for="tipo">Tipo de Produto</label>
+        <select id="tipo" [(ngModel)]="produto.tipo" name="tipo" required>
+          <option value="" disabled>Selecione um tipo...</option>
+          <option value="PIZZA_ESPECIAL">Pizza Especial</option>
+          <option value="PIZZA_TRADICIONAL">Pizza Tradicional</option>
+          <option value="PIZZA_DOCE">Pizza Doce</option>
+          <option value="PASTEL_DOCE">Pastel Doce</option>
+          <option value="LANCHES">Lanches</option>
+          <option value="PASTEL">Pastel</option>
+          <option value="SUCOS">Sucos</option>
+          <option value="DRINKS">Drinks</option>
+          <option value="SOBREMESA">Sobremesa</option>
+          <option value="BEBIDA">Bebida</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+          <label for="imagem">Imagem do Produto</label>
+          <input type="file" id="imagem" (change)="onFileSelected($event)">
+      </div>
+    </div>
+
+    <!-- Botão de Ação -->
+    <div class="form-actions">
+      <button type="submit" class="btn-salvar">Cadastrar Produto</button>
+    </div>
+  </form>
+
+  <!-- Mensagem de sucesso -->
+  <div *ngIf="mensagemSucesso" class="mensagem-sucesso">
+    {{ mensagemSucesso }}
+  </div>
+</div>

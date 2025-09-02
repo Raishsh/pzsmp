@@ -1,0 +1,37 @@
+<div class="page-header">
+  <div class="header-text">
+    <h1>Relatório Detalhado - {{ dataDoRelatorio | date:'dd/MM/yyyy' }}</h1>
+    <p>Todos os pedidos registrados na data selecionada.</p>
+  </div>
+</div>
+
+<div class="pedidos-grid" *ngIf="pedidosDoDia.length > 0; else semPedidos">
+  <div *ngFor="let pedido of pedidosDoDia" class="card pedido-card">
+    <div class="card-header">
+      <h3>Pedido Nº {{ pedido.idPedido }}</h3>
+      <div class="tags">
+        <span class="tag" *ngIf="pedido.numeroMesa">Mesa {{ pedido.numeroMesa }}</span>
+        <span class="tag" *ngIf="pedido.nomeClienteTemporario && !pedido.numeroMesa">Balcão</span>
+        <span class="tag status {{ pedido.status | lowercase }}">{{ pedido.status }}</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <ul class="itens-lista">
+        <li *ngFor="let item of pedido.itens">
+          <span>{{ item.quantidade }}x {{ item.nomeProduto }}</span>
+          <span>{{ item.precoUnitario | currency:'BRL' }}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <span>Cliente: {{ pedido.cliente?.nome || pedido.nomeClienteTemporario || 'Não identificado' }}</span>
+      <strong>Total: {{ pedido.total | currency:'BRL' }}</strong>
+    </div>
+  </div>
+</div>
+
+<ng-template #semPedidos>
+  <div class="card text-center">
+    <p>Nenhum pedido encontrado para esta data.</p>
+  </div>
+</ng-template>

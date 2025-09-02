@@ -1,0 +1,37 @@
+<div class="page-header">
+  <div class="header-text">
+    <h1>Histórico de Sangrias</h1>
+    <p>Visualize todas as retiradas de dinheiro registradas no caixa.</p>
+  </div>
+  <div class="header-actions">
+    <button *ngIf="cargoUsuario === 'ADMIN'" class="btn-primario" (click)="abrirModalSangria()">
+      + Realizar Sangria
+    </button>
+  </div>
+</div>
+
+<div class="card">
+  <table>
+    <thead>
+      <tr>
+        <th>Data / Hora</th>
+        <th>Valor</th>
+        <th>Funcionário</th>
+        <th>Observação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of historico">
+        <td>{{ item.data | date:'dd/MM/yyyy HH:mm' }}</td>
+        <td>{{ item.valor | currency:'BRL' }}</td>
+        <td>{{ item.nomeFuncionario }}</td>
+        <td>{{ item.observacao || 'N/A' }}</td>
+      </tr>
+      <tr *ngIf="historico.length === 0">
+        <td colspan="4" class="text-center">Nenhum registro de sangria encontrado.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-sangria-modal *ngIf="mostrarModalSangria" (close)="fecharModalSangria()"></app-sangria-modal>

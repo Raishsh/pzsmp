@@ -1,0 +1,57 @@
+<div class="page-header">
+  <div class="header-text">
+    <h1>Pedido de Balcão</h1>
+    <p>Registre um novo pedido para retirada no restaurante.</p>
+  </div>
+  <div class="header-actions">
+    </div>
+</div>
+
+<div class="novo-pedido-view">
+  <div class="cardapio-coluna">
+    <h4>Cardápio</h4>
+    <div class="filtros-cardapio">
+      <button *ngFor="let tipo of tiposDeProduto" class="btn-filtro" 
+              (click)="filtrarCardapio(tipo)"
+              [class.active]="filtroCardapioAtual === tipo">
+        {{ formatarNomeFiltro(tipo) }}
+      </button>
+    </div>
+    <div class="lista-produtos-cardapio">
+      <div class="item-cardapio" *ngFor="let produto of cardapioFiltrado" (click)="adicionarAoPedido(produto)">
+        {{ produto.nome }} - R$ {{ produto.preco.toFixed(2) }}
+      </div>
+    </div>
+  </div>
+
+  <div class="pedido-coluna">
+    <h4>Pedido Atual</h4>
+    
+    <div class="form-group">
+      <label for="nomeCliente">Nome do Cliente</label>
+      <input id="nomeCliente" type="text" [(ngModel)]="nomeCliente" name="nomeCliente" required>
+    </div>
+    
+    <div class="itens-container" *ngIf="novoPedidoItens.length > 0; else pedidoVazio">
+      
+      <div *ngFor="let item of novoPedidoItens" class="item-pedido-atual">
+        <div class="item-info">
+          <span>{{ item.quantidade }}x {{ item.produto.nome }}</span>
+          <span>R$ {{ (item.produto.preco * item.quantidade).toFixed(2) }}</span>
+        </div>
+        <button class="btn-remover-item" (click)="removerDoPedido(item)" title="Remover Item">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </div>
+      <hr>
+      <div class="total-pedido">
+        <strong>Total: R$ {{ totalNovoPedido.toFixed(2) }}</strong>
+      </div>
+    </div>
+    <ng-template #pedidoVazio>
+      <p class="pedido-vazio-mensagem">Clique nos itens do cardápio para adicionar.</p>
+    </ng-template>
+
+    <button class="btn-finalizar-pedido" (click)="finalizarPedido()">Finalizar Pedido</button>
+  </div>
+</div>

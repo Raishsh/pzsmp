@@ -1,0 +1,55 @@
+<div class="main-container">
+  <aside class="sidebar">
+
+    <div class="sidebar-header">
+  <img src="assets/images/icone2.png" alt="Logo" class="logo-icon" />
+  <!-- Agrupamos o texto para melhor alinhamento -->
+  <div class="header-title">
+    <h3>Sampaiollo</h3>
+    <span>LTDA</span>
+  </div>
+      
+</div>
+    <nav class="sidebar-nav">
+      <a routerLink="/app/pedidos" routerLinkActive="active"><i class="fas fa-box"></i> Pedidos</a>
+      <a routerLink="/app/cardapio" routerLinkActive="active"><i class="fas fa-utensils"></i> Cardápio</a>
+      <a routerLink="/app/entregas" routerLinkActive="active"><i class="fas fa-truck"></i> Entrega</a>
+      <a routerLink="/app/mesas" routerLinkActive="active"><i class="fas fa-chair"></i>Mesas</a>
+      <a routerLink="/app/balcao" routerLinkActive="active"><i class="fas fa-cash-register"></i> Balcão</a>
+      <a routerLink="/app/cadastro-produto" routerLinkActive="active"><i class="fas fa-plus-square"></i> Cadastro de Produto</a>
+      <a routerLink="/app/cadastro-cliente" routerLinkActive="active"><i class="fas fa-user-plus"></i>Clientes</a>
+      <a routerLink="/app/funcionarios" routerLinkActive="active"><i class="fas fa-users-cog"></i>Funcionários</a>
+      <a routerLink="/app/relatorios" routerLinkActive="active"><i class="fas fa-chart-bar"></i> Relatórios</a>
+      <a routerLink="/app/historico-sangria" routerLinkActive="active" *ngIf="cargoUsuario === 'ADMIN'">
+      <i class="fas fa-box-open"></i>Sangrias</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="sidebar-actions">
+        <button class="btn-fechar-caixa" (click)="fecharCaixa()">Fechar Caixa</button>
+      </div>
+    </div>
+
+
+  </aside>
+
+  <main class="content-area">
+    <header class="content-header">
+      <div class="header-placeholder"></div>
+      <div class="header-datetime">
+    <span class="date">{{ dataAtual | date:'fullDate' }}</span>
+    <span class="time">{{ dataAtual | date:'HH:mm:ss' }}</span>
+  </div>
+
+      <div class="user-profile">
+        <div class="user-info">
+          <i class="fas fa-user-circle"></i> 
+          <span>{{ nomeUsuarioLogado || 'Usuário' }}</span> 
+        </div>
+        <a (click)="logout()" class="btn-logout" title="Sair">
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+      </div>
+    </header>
+    <router-outlet></router-outlet>
+  </main>
+</div>

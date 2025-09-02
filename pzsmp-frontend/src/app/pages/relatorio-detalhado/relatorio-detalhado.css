@@ -1,0 +1,115 @@
+/* Estilos Padrão (reutilizados de outras páginas) */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.header-text h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.header-text p {
+  font-size: 1rem;
+  color: #718096;
+  margin: 0;
+}
+
+.text-center {
+  text-align: center;
+  padding: 40px;
+  color: #a0aec0;
+}
+
+/* Grid de Pedidos */
+.pedidos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 25px;
+}
+
+/* Card do Pedido */
+.card.pedido-card {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+}
+
+.tag {
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background-color: #e2e8f0;
+  color: #333;
+}
+
+/* Cores para os status */
+.tag.status.preparando {
+  background-color: #feefc3; /* Amarelo */
+  color: #7a4f01;
+}
+
+.tag.status.pronto {
+  background-color: #e5f7f3; /* Azul/Verde claro */
+  color: #0d6e6e;
+}
+
+.tag.status.pago {
+  background-color: #d1fae5; /* Verde claro */
+  color: #065f46; /* Verde escuro */
+}
+
+.tag.status.entregue {
+  background-color: #e5e7eb; /* Cinza */
+  color: #4b5563;
+}
+
+.card-body {
+  flex-grow: 1;
+}
+
+.itens-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.itens-lista li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e2e8f0;
+  font-weight: 500;
+}

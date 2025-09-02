@@ -1,0 +1,231 @@
+/* =================================================================== */
+/* CSS COMPLETO E CONSOLIDADO - PÁGINA CLIENTES                      */
+/* =================================================================== */
+
+/* Estilos para o Cabeçalho da Página
+------------------------------------------------------------------- */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--cor-borda, #e2e8f0);
+}
+
+.header-text h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--cor-texto-principal, #1a202c);
+  margin: 0 0 8px 0;
+}
+
+.header-text p {
+  font-size: 1rem;
+  color: var(--cor-texto-secundario, #718096);
+  margin: 0;
+}
+
+.header-actions .btn-primario {
+  background-color: rgb(50, 50, 50);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.header-actions .btn-primario:hover {
+  background-color: rgb(80, 80, 80);
+}
+
+/* Card de Conteúdo (para Lista e Formulário)
+------------------------------------------------------------------- */
+.card {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+/* Tabela de Clientes
+------------------------------------------------------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  padding: 16px;
+  text-align: left;
+  color: #718096;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+tbody td {
+  padding: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: middle;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+tbody tr:hover {
+  background-color: #f0f4f8;
+}
+
+.texto-secundario {
+  color: #a0aec0;
+  font-style: italic;
+}
+
+.acoes-cell {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-acao {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: opacity 0.2s;
+}
+.btn-acao:hover {
+  opacity: 0.85;
+}
+
+.btn-aviso {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.btn-erro {
+  background-color: #dc3545;
+}
+
+
+/* Formulário de Cadastro/Edição
+------------------------------------------------------------------- */
+.card h4 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 10px;
+}
+hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 30px 0;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #4a5568;
+}
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Ações do Formulário (Salvar, Cancelar)
+------------------------------------------------------------------- */
+.form-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+.form-actions .btn-primario,
+.form-actions .btn-secundario {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.form-actions .btn-primario {
+  background-color: rgb(50, 50, 50);
+  color: white;
+}
+.form-actions .btn-secundario {
+  background-color: #e2e8f0;
+  color: #2d3748;
+}
+
+/* Modal de Edição
+------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.modal-content {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+.modal-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+.modal-actions .btn-primario,
+.modal-actions .btn-secundario {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.modal-actions .btn-primario {
+  background-color: rgb(50, 50, 50);
+  color: white;
+}
+
+.modal-actions .btn-primario:hover {
+  background-color: rgb(80, 80, 80);
+  color: white;
+}
+
+.modal-actions .btn-secundario {
+  background-color: #e2e8f0;
+  color: #2d3748;
+}

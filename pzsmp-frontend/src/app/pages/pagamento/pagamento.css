@@ -1,0 +1,158 @@
+
+
+
+/* Estilos para o Cabeçalho da Página (Menos espaço abaixo)
+------------------------------------------------------------------- */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px; /* Reduzido de 40px */
+  padding-bottom: 20px; /* Reduzido de 25px */
+  border-bottom: 1px solid var(--cor-borda, #e2e8f0);
+}
+
+.header-text h1 {
+  font-size: 1.8rem; /* Um pouco menor */
+  font-weight: 700;
+  color: var(--cor-texto-principal, #1a202c);
+  margin: 0 0 8px 0;
+}
+
+
+/* Card de Conteúdo Principal (Menos padding interno)
+------------------------------------------------------------------- */
+.card {
+  max-width: 600px; /* Largura menor para telas grandes */
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 30px; /* Reduzido de 40px */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+.card h2 {
+  font-size: 1.3rem; /* Um pouco menor */
+  margin-top: 0;
+  margin-bottom: 15px; /* Reduzido de 20px */
+  text-align: center;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 20px 0; /* Reduzido de 30px */
+}
+
+
+/* Detalhes do Pedido (Mais compacto)
+------------------------------------------------------------------- */
+.detalhes-pedido ul {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0; /* Reduzido de 20px */
+}
+.detalhes-pedido li, .total {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0; /* Reduzido de 15px */
+  border-bottom: 1px solid #f1f5f9;
+}
+.total {
+  font-size: 1.2rem; /* Um pouco menor */
+  font-weight: 600;
+  border-bottom: none;
+  padding-top: 12px; /* Reduzido */
+}
+
+
+/* Método de Pagamento (Opções mais próximas)
+------------------------------------------------------------------- */
+.opcoes-pagamento {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px; /* Reduzido de 15px */
+  margin-top: 15px; /* Reduzido de 20px */
+}
+
+.opcao-radio {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.opcao-radio:hover {
+  border-color: var(--cor-primaria, #007bff);
+}
+
+/* Esconde o rádio original */
+.opcao-radio input[type="radio"] {
+  display: none;
+}
+
+/* Círculo customizado */
+.radio-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #cbd5e0;
+  border-radius: 50%;
+  margin-right: 12px;
+  display: inline-block;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* Ponto central do rádio (quando selecionado) */
+.radio-custom::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.2s ease;
+}
+
+.opcao-radio input[type="radio"]:checked + .radio-custom {
+  background-color: var(--cor-primaria, #007bff);
+  border-color: var(--cor-primaria, #007bff);
+}
+.opcao-radio input[type="radio"]:checked + .radio-custom::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.opcao-radio input[type="radio"]:checked ~ .radio-label {
+  font-weight: 600;
+  color: var(--cor-primaria, #007bff);
+}
+
+
+/* Ações do Formulário (Menos espaço acima)
+------------------------------------------------------------------- */
+.form-actions {
+  margin-top: 30px; /* Reduzido de 40px */
+}
+
+.btn-confirmar {
+  width: 100%;
+  padding: 15px;
+  background-color: rgb(50, 50, 50);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-confirmar:hover {
+  background-color: rgb(80, 80, 80);
+}
