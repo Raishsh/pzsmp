@@ -1,44 +1,38 @@
-version: '3.8'
-
 services:
-  # Serviço do Banco de Dados
   db:
     image: postgres:15-alpine
     container_name: pzsmp_db
     environment:
-      POSTGRES_DB: pzsmp_db
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin123
+      POSTGR-ES_DB: pzsmp
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "12345"
     ports:
       - "5432:5432"
     volumes:
       - ./pgdata:/var/lib/postgresql/data
     restart: always
 
-  # Serviço do Backend
   backend:
-    build: ./pzsmp # Aponta para a pasta do backend
+    build: ./pzsmp
     container_name: pzsmp_backend
     ports:
       - "8081:8081"
     environment:
-      # Sobrescreve as configurações do application.properties
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/pzsmp_db
-      SPRING_DATASOURCE_USERNAME: admin
-      SPRING_DATASOURCE_PASSWORD: admin123
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/pzsmp
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: "12345"
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     depends_on:
-      - db # Garante que o banco de dados inicie antes do backend
+      - db
     restart: on-failure
 
-  # Serviço do Frontend
   frontend:
-    build: ./pzsmp-frontend # Aponta para a pasta do frontend
+    build: ./pzsmp-frontend
     container_name: pzsmp_frontend
     ports:
-      - "4200:80" # A porta 80 do Nginx será acessada pela porta 4200 no seu navegador
+      - "4200:80"
     depends_on:
-      - backend # Garante que o backend inicie antes do frontend
+      - backend
     restart: on-failure
 
 volumes:
