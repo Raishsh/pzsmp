@@ -3,7 +3,7 @@ services:
     image: postgres:15-alpine
     container_name: pzsmp_db
     environment:
-      POSTGR-ES_DB: pzsmp
+      POSTGRES_DB: pzsmp
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: "12345"
     ports:
@@ -11,6 +11,12 @@ services:
     volumes:
       - ./pgdata:/var/lib/postgresql/data
     restart: always
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   backend:
     build: ./pzsmp
@@ -23,7 +29,8 @@ services:
       SPRING_DATASOURCE_PASSWORD: "12345"
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     depends_on:
-      - db
+      db:
+          condition: service_healthy
     restart: on-failure
 
   frontend:
