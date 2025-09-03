@@ -80,7 +80,6 @@ Este projeto é totalmente containerizado, então a única dependência que voc�
 
 ## 👤 Autor
 
-**Fabio Fagundes**
-- [GitHub](https://github.com/FabioFagundes01)
-- [LinkedIn](https://www.linkedin.com/in/fabio-gabriel-ivancheski-fagundes-b635782a9/)
-
+**Raí Tobias**
+- [GitHub](https://github.com/Raishsh)
+- [LinkedIn](https://www.linkedin.com/in/raitobias777/)
