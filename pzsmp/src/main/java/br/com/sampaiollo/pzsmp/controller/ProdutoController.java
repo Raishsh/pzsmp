@@ -40,10 +40,10 @@ public ResponseEntity<Produto> cadastrarProduto(
         @RequestParam("nome") String nome,
         @RequestParam("preco") BigDecimal preco,
         @RequestParam("tipo") String tipo,
+        @RequestParam(value = "descricao", required = false) String descricao,
         @RequestParam(value = "imagem", required = false) MultipartFile imagem) {
 
-    // Cria o DTO a partir dos parâmetros recebidos
-    ProdutoRequest request = new ProdutoRequest(nome, tipo, preco);
+    ProdutoRequest request = new ProdutoRequest(nome, tipo, preco, descricao);
 
     Produto produtoSalvo = produtoService.cadastrarProduto(request, imagem);
     return ResponseEntity.status(HttpStatus.CREATED).body(produtoSalvo);
@@ -56,11 +56,12 @@ public ResponseEntity<Produto> atualizarProduto(
         @RequestParam("nome") String nome,
         @RequestParam("preco") BigDecimal preco,
         @RequestParam("tipo") String tipo,
+        @RequestParam(value = "descricao", required = false) String descricao,
         @RequestParam(value = "imagem", required = false) MultipartFile imagem) {
 
-    ProdutoRequest request = new ProdutoRequest(nome, tipo, preco);
+    ProdutoRequest request = new ProdutoRequest(nome, tipo, preco, descricao);
     Produto produtoAtualizado = produtoService.atualizarProduto(id, request, imagem);
-    
+
     return ResponseEntity.ok(produtoAtualizado);
 }
 

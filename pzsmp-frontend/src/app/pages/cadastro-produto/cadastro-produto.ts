@@ -13,8 +13,9 @@ import { ProdutoService } from '../../core/services/produto';
 export class CadastroProdutoComponent {
   produto = {
     nome: '',
-    preco: null,
-    tipo: ''
+    preco: null as number | null,
+    tipo: '',
+    descricao: ''
   };
   arquivoSelecionado: File | null = null;
   mensagemSucesso: string | null = null;
@@ -36,9 +37,12 @@ export class CadastroProdutoComponent {
     const formData = new FormData();
     formData.append('nome', this.produto.nome);
     if (this.produto.preco !== null) {
-        formData.append('preco', this.produto.preco);
+        formData.append('preco', this.produto.preco as any);
     }
     formData.append('tipo', this.produto.tipo);
+    if (this.produto.descricao) {
+      formData.append('descricao', this.produto.descricao);
+    }
     if (this.arquivoSelecionado) {
       formData.append('imagem', this.arquivoSelecionado, this.arquivoSelecionado.name);
     }
@@ -57,7 +61,7 @@ export class CadastroProdutoComponent {
   }
 
   limparFormulario(): void {
-    this.produto = { nome: '', preco: null, tipo: '' };
+    this.produto = { nome: '', preco: null, tipo: '', descricao: '' };
     this.arquivoSelecionado = null;
     // Opcional: resetar o input de arquivo (um pouco mais complexo)
     const fileInput = document.getElementById('imagem') as HTMLInputElement;
