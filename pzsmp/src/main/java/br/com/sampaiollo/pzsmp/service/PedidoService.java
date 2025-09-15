@@ -51,9 +51,16 @@ public class PedidoService {
 
         Pedido pedido = new Pedido();
         pedido.setCliente(cliente);
-        pedido.setData(LocalDateTime.now());
+        LocalDateTime agora = LocalDateTime.now();
+        pedido.setData(agora);
         pedido.setStatus(StatusPedido.PREPARANDO);
         pedido.setNomeClienteTemporario(pedidoDto.getNomeClienteTemporario());
+        // Define numeroDia sequencial por dia
+        var hoje = agora.toLocalDate();
+        var inicio = hoje.atStartOfDay();
+        var fim = hoje.atTime(23, 59, 59);
+        Integer maxNumero = pedidoRepository.findMaxNumeroDiaBetween(inicio, fim);
+        pedido.setNumeroDia((maxNumero == null ? 0 : maxNumero) + 1);
 
         if (pedidoDto.getIdMesa() != null) {
             Mesa mesa = mesaRepository.findById(pedidoDto.getIdMesa())
