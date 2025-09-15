@@ -5,12 +5,20 @@ import br.com.sampaiollo.pzsmp.entity.TipoUsuario;
 import br.com.sampaiollo.pzsmp.entity.Usuario;
 import br.com.sampaiollo.pzsmp.repository.FuncionarioRepository;
 import br.com.sampaiollo.pzsmp.repository.UsuarioRepository;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Nonnull;
+
 @Component
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class DataSeeder implements CommandLineRunner {
 
     @Autowired

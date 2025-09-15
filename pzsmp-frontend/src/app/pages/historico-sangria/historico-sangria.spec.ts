@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HistoricoSangria } from './historico-sangria';
+import { HistoricoSangriaComponent } from './historico-sangria';
 
 describe('HistoricoSangria', () => {
-  let component: HistoricoSangria;
-  let fixture: ComponentFixture<HistoricoSangria>;
+  let component: HistoricoSangriaComponent;
+  let fixture: ComponentFixture<HistoricoSangriaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HistoricoSangria]
+      imports: [HistoricoSangriaComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HistoricoSangria);
+    fixture = TestBed.createComponent(HistoricoSangriaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

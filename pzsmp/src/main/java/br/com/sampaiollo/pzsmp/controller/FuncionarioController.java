@@ -3,11 +3,13 @@ package br.com.sampaiollo.pzsmp.controller;
 import br.com.sampaiollo.pzsmp.dto.FuncionarioRequestDto;
 import br.com.sampaiollo.pzsmp.dto.FuncionarioResponseDto; // Importar o novo DTO
 import br.com.sampaiollo.pzsmp.service.FuncionarioService;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+@Data
 @RestController
 @RequestMapping("/api/funcionarios")
 @CrossOrigin(origins = "*")

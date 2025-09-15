@@ -29,9 +29,10 @@
         <strong>Total: {{ pedido.total | currency:'BRL' }}</strong>
       </div>
       <div class="card-actions">
-        <button *ngIf="pedido.status === 'PREPARANDO'" class="btn btn-sucesso" (click)="mudarStatus(pedido.idPedido, 'PRONTO')">
-          Marcar como Pronto
-        </button>
+          <button *ngIf="pedido.status === 'PREPARANDO'" class="btn btn-sucesso" (click)="mudarStatus(pedido.idPedido, 'PRONTO')">
+            Marcar como Pronto
+          </button>
+
         <div *ngIf="pedido.status === 'PRONTO'">
           <button *ngIf="pedido.numeroMesa" class="btn btn-info" (click)="fecharPedido(pedido.idPedido)">
             Fechar Pedido
@@ -40,9 +41,16 @@
             Finalizar Entrega
           </button>
         </div>
-        <button class="btn btn-primario" [routerLink]="['/app/pagamento', pedido.idPedido]">
-          Ir para Pagamento
-        </button>
+
+          <button *ngIf="pedido.status !== 'PAGO'" class="btn btn-primario" [routerLink]="['/app/pagamento', pedido.idPedido]">
+            Ir para Pagamento
+          </button>
+
+        <div *ngIf="pedido.status === 'PAGO'">
+          <button class="btn btn-sucesso" disabled>
+            Pagamento Realizado
+          </button>
+        </div>
       </div>
     </div>
   </div>
