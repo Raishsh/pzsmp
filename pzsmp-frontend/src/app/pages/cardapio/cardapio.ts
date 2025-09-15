@@ -92,6 +92,9 @@ export class Cardapio implements OnInit {
     formData.append('nome', this.produtoEmEdicao.nome);
     formData.append('preco', this.produtoEmEdicao.preco.toString());
     formData.append('tipo', this.produtoEmEdicao.tipo);
+    if (this.produtoEmEdicao.descricao) {
+      formData.append('descricao', this.produtoEmEdicao.descricao);
+    }
 
     if (this.arquivoSelecionado) {
       formData.append('imagem', this.arquivoSelecionado, this.arquivoSelecionado.name);

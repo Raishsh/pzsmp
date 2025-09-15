@@ -31,6 +31,7 @@
     <div class="produto-info">
       <h3>{{ produto.nome }}</h3>
       <p>R$ {{ produto.preco.toFixed(2) }}</p>
+      <p *ngIf="produto.descricao" class="produto-descricao">{{ produto.descricao }}</p>
     </div>
     <div class="card-actions">
       <button class="btn btn-aviso" (click)="abrirModalEdicao(produto)">Editar</button>
@@ -68,7 +69,12 @@
           <option *ngFor="let tipo of tiposDeProduto" [value]="tipo">{{ formatarNomeFiltro(tipo) }}</option>
         </select>
       </div>
-      
+
+      <div class="form-group">
+        <label for="edit-descricao">Descrição (opcional)</label>
+        <textarea id="edit-descricao" [(ngModel)]="produtoEmEdicao.descricao" name="edit-descricao" rows="3" placeholder="Ex.: Ingredientes, observações, porções..."></textarea>
+      </div>
+
       <div class="form-group">
         <label for="edit-imagem">Trocar Imagem (opcional)</label>
         <input type="file" id="edit-imagem" (change)="onFileSelected($event)">
