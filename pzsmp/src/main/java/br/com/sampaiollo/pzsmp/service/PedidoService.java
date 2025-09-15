@@ -40,6 +40,8 @@ public class PedidoService {
     private ItemPedidoRepository itemPedidoRepository;
       @Autowired
     private PagamentoRepository pagamentoRepository;
+    @Autowired
+    private br.com.sampaiollo.pzsmp.repository.SequencienciadorPedidoRepository sequenciadorRepository;
 
     @Transactional
     public PedidoResponseDto realizarPedido(PedidoRequestDto pedidoDto) {
@@ -55,12 +57,16 @@ public class PedidoService {
         pedido.setData(agora);
         pedido.setStatus(StatusPedido.PREPARANDO);
         pedido.setNomeClienteTemporario(pedidoDto.getNomeClienteTemporario());
-        // Define numeroDia sequencial por dia
-        var hoje = agora.toLocalDate();
-        var inicio = hoje.atStartOfDay();
-        var fim = hoje.atTime(23, 59, 59);
-        Integer maxNumero = pedidoRepository.findMaxNumeroDiaBetween(inicio, fim);
-        pedido.setNumeroDia((maxNumero == null ? 0 : maxNumero) + 1);
+        // Define numero do pedido sequencial global controlado por sequenciador
+        SequenciadorPedido seq = sequenciadorRepository.findById(1L)
+                .orElseGet(() -> {
+                    SequenciadorPedido novo = new SequenciadorPedido(1L, 1);
+                    return sequenciadorRepository.save(novo);
+                });
+        Integer numeroAtual = seq.getProximoNumero();
+        pedido.setNumeroDia(numeroAtual);
+        seq.setProximoNumero(numeroAtual + 1);
+        sequenciadorRepository.save(seq);
 
         if (pedidoDto.getIdMesa() != null) {
             Mesa mesa = mesaRepository.findById(pedidoDto.getIdMesa())
@@ -173,7 +179,16 @@ public class PedidoService {
         // 2. Mantém os pedidos salvos para o Relatório Detalhado; não apagamos dados do dia
         // Apenas garantimos que as mesas fiquem livres para o próximo atendimento
 
-        // 3. RESETA O STATUS DE TODAS AS MESAS PARA LIVRE
+        // 3. Reseta o sequenciador de número de pedidos para 1
+        var seq = sequenciadorRepository.findById(1L).orElse(null);
+        if (seq == null) {
+            seq = new br.com.sampaiollo.pzsmp.entity.SequenciadorPedido(1L, 1);
+        } else {
+            seq.setProximoNumero(1);
+        }
+        sequenciadorRepository.save(seq);
+
+        // 4. RESETA O STATUS DE TODAS AS MESAS PARA LIVRE
         List<Mesa> todasAsMesas = mesaRepository.findAll();
         todasAsMesas.forEach(mesa -> mesa.setStatus(StatusMesa.LIVRE));
         mesaRepository.saveAll(todasAsMesas);
