@@ -58,9 +58,9 @@ public class PedidoService {
         pedido.setStatus(StatusPedido.PREPARANDO);
         pedido.setNomeClienteTemporario(pedidoDto.getNomeClienteTemporario());
         // Define numero do pedido sequencial global controlado por sequenciador
-        SequenciadorPedido seq = sequenciadorRepository.findById(1L)
+        br.com.sampaiollo.pzsmp.entity.SequenciadorPedido seq = sequenciadorRepository.findById(1L)
                 .orElseGet(() -> {
-                    SequenciadorPedido novo = new SequenciadorPedido(1L, 1);
+                    br.com.sampaiollo.pzsmp.entity.SequenciadorPedido novo = new br.com.sampaiollo.pzsmp.entity.SequenciadorPedido(1L, 1);
                     return sequenciadorRepository.save(novo);
                 });
         Integer numeroAtual = seq.getProximoNumero();
