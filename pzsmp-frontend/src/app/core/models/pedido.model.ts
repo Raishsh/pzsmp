@@ -17,5 +17,6 @@ export interface Pedido {
   cliente?: Cliente;
   itens: ItemPedido[];
   numeroMesa?: number;
-  nomeClienteTemporario?: string; // <<< CAMPO ADICIONADO AQUI
+  nomeClienteTemporario?: string;
+  numeroDia?: number;
 }

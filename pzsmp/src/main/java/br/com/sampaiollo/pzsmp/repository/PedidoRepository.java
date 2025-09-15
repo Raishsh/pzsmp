@@ -20,7 +20,10 @@ public interface PedidoRepository extends JpaRepository<Pedido, Integer> {
     List<Pedido> findByClienteId(Integer idCliente);
     List<Pedido> findByStatus(StatusPedido status);
     List<Pedido> findByDataBetween(LocalDateTime dataInicio, LocalDateTime dataFim);
-    
+
+    @Query("SELECT COALESCE(MAX(p.numeroDia), 0) FROM Pedido p WHERE p.data BETWEEN :dataInicio AND :dataFim")
+    Integer findMaxNumeroDiaBetween(@Param("dataInicio") LocalDateTime dataInicio, @Param("dataFim") LocalDateTime dataFim);
+
     // Busca pedidos ativos de uma mesa, carregando os detalhes
     @EntityGraph(attributePaths = {"itens", "cliente", "mesa"})
     List<Pedido> findByMesaNumeroAndStatusNot(Integer numeroMesa, StatusPedido status);

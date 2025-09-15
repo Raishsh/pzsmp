@@ -26,7 +26,9 @@ public class Pedido {
 
     @Column(name = "data", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime data;
-    
+
+    @Column(name = "numero_dia")
+    private Integer numeroDia;
 
     private String nomeClienteTemporario;
     @ManyToOne
