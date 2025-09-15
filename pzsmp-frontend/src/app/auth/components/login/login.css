@@ -105,12 +105,9 @@
 
 .error-message {
   position: absolute;
-  /* Posiciona a mensagem logo abaixo do campo "Senha" */
-  top: 313px; /* <-- Você talvez precise ajustar este valor para cima ou para baixo */
-  left: 40px;  /* Respeita o padding da caixa */
-  right: 40px; /* Respeita o padding da caixa */
-
-  /* Estilo visual da caixa de erro */
+  top: 313px;
+  left: 40px;
+  right: 40px;
   color: #D8000C;
   background-color: #FFD2D2;
   border: 1px solid #D8000C;
@@ -119,5 +116,64 @@
   text-align: center;
   font-size: 14px;
   box-sizing: border-box;
-  z-index: 10; /* Garante que fique por cima de outros elementos */
+  z-index: 10;
+}
+
+/* Modal reutiliza o mesmo estilo visual do modal existente (sangria) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #718096;
+}
+
+.modal-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.modal-actions .btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primario {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-secundario {
+  background-color: #e2e8f0;
+  color: #2d3748;
 }
