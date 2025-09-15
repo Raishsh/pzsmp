@@ -170,18 +170,10 @@ public class PedidoService {
         // 1. CALCULA E SALVA O RELATÓRIO FINAL DO DIA
        // processarRelatorioDoDia();
 
-        // 2. <<< LÓGICA DE EXCLUSÃO CORRIGIDA >>>
-        // Primeiro, apaga todos os dados "filhos" que dependem de 'pedido'
-        itemPedidoRepository.deleteAllInBatch();
-        pagamentoRepository.deleteAllInBatch(); // <<< ADICIONADO AQUI
+        // 2. Mantém os pedidos salvos para o Relatório Detalhado; não apagamos dados do dia
+        // Apenas garantimos que as mesas fiquem livres para o próximo atendimento
 
-        // Agora que não há mais dependências, apaga os "pais" (Pedido)
-        pedidoRepository.deleteAllInBatch();
-
-        // 3. REINICIA O CONTADOR DE ID DA TABELA DE PEDIDOS
-        entityManager.createNativeQuery("ALTER SEQUENCE pedido_id_seq RESTART WITH 1").executeUpdate();
-
-        // 4. RESETA O STATUS DE TODAS AS MESAS PARA LIVRE
+        // 3. RESETA O STATUS DE TODAS AS MESAS PARA LIVRE
         List<Mesa> todasAsMesas = mesaRepository.findAll();
         todasAsMesas.forEach(mesa -> mesa.setStatus(StatusMesa.LIVRE));
         mesaRepository.saveAll(todasAsMesas);
