@@ -9,7 +9,7 @@
   <div class="pedidos-grid">
     <div *ngFor="let pedido of pedidos" class="card pedido-card">
       <div class="card-header">
-        <h3>Pedido Nº {{ pedido.idPedido }}</h3>
+        <h3>Pedido Nº {{ pedido.numeroDia || pedido.idPedido }}</h3>
         <div class="tags">
           <span class="tag" *ngIf="pedido.numeroMesa">Mesa {{ pedido.numeroMesa }}</span>
           <span class="tag" *ngIf="pedido.nomeClienteTemporario && !pedido.numeroMesa">Balcão</span>
