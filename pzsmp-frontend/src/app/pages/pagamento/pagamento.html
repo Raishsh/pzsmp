@@ -8,7 +8,7 @@
 <div class="card" *ngIf="pedido">
   
   <div class="detalhes-pedido">
-    <h2>Detalhes do Pedido #{{ pedido.idPedido }}</h2>
+    <h2>Detalhes do Pedido #{{ pedido.numeroDia || pedido.idPedido }}</h2>
     <ul>
       <li *ngFor="let item of pedido.itens">
         <span>{{ item.quantidade }}x {{ item.nomeProduto }}</span>
