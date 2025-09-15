@@ -21,6 +21,17 @@
       <button type="submit" class="login-button">Entrar</button>
     </form>
 
-    <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+    <a href="#" class="forgot-password" (click)="$event.preventDefault(); openForgotPassword()">Esqueceu sua senha?</a>
+  </div>
+
+  <div *ngIf="showForgotPassword" class="modal-overlay" (click)="closeForgotPassword()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h2>Redefinição de Senha</h2>
+      <p>Para redefinir sua senha, solicite a um administrador. Informe seu login para que ele atualize sua senha na tela de Funcionários.</p>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secundario" (click)="closeForgotPassword()">Fechar</button>
+      </div>
+    </div>
   </div>
 </div>
