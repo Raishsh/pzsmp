@@ -111,7 +111,7 @@ public class PedidoService {
     }
 
     public List<PedidoResponseDto> listarTodos() {
-        List<StatusPedido> excluir = List.of(StatusPedido.PAGO, StatusPedido.ENTREGUE, StatusPedido.CANCELADO);
+        List<StatusPedido> excluir = List.of(StatusPedido.ENTREGUE, StatusPedido.CANCELADO);
         return pedidoRepository.findAll().stream()
                 .filter(p -> !excluir.contains(p.getStatus()))
                 .map(PedidoResponseDto::new)
@@ -182,6 +182,9 @@ public class PedidoService {
         for (Pedido p : todos) {
             if (p.getStatus() == StatusPedido.PREPARANDO || p.getStatus() == StatusPedido.PRONTO) {
                 p.setStatus(StatusPedido.CANCELADO);
+                alterados.add(p);
+            } else if (p.getStatus() == StatusPedido.PAGO) {
+                p.setStatus(StatusPedido.ENTREGUE);
                 alterados.add(p);
             }
         }
