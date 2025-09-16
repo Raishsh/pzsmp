@@ -59,13 +59,13 @@ export class MainLayoutComponent implements OnInit {
    */
   fecharCaixa(): void {
     const confirmacao = confirm(
-      'Fechar caixa irá liberar todas as mesas e encerrar o expediente. Pedidos pagos permanecerão salvos para os relatórios.\n\nDeseja continuar?'
+      'Fechar caixa irá liberar todas as mesas e encerrar o expediente. Todos os pedidos realizados permanecerão salvos no Relatório Detalhado.\n\nDeseja continuar?'
     );
 
     if (confirmacao) {
       this.pedidoService.fecharCaixa().subscribe({
         next: () => {
-          alert('Caixa fechado com sucesso! Pedidos pagos permanecem salvos para os relatórios.');
+          alert('Caixa fechado com sucesso! A lista de pedidos foi limpa e todos os pedidos realizados ficam no Relatório Detalhado.');
           window.location.reload(); // Recarrega a aplicação
         },
         error: (err) => {
