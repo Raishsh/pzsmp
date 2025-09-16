@@ -59,7 +59,7 @@ export class MainLayoutComponent implements OnInit {
    */
   fecharCaixa(): void {
     const confirmacao = confirm(
-      'Fechar caixa irá liberar todas as mesas e encerrar o expediente. Pedidos pagos permanecerão salvos para os relatórios.\n\nDeseja continuar?'
+      'Fechar caixa irá liberar todas as mesas e encerrar o expediente. Todos os pedidos realizados permanecerão salvos no Relatório Detalhado.\n\nDeseja continuar?'
     );
 
     if (confirmacao) {
