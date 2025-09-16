@@ -52,11 +52,14 @@ export class Pedidos implements OnInit {
 
   fecharPedido(pedidoId: number): void {
     this.pedidoService.fecharPedido(pedidoId).subscribe({
-        next: () => {
-            this.carregarPedidos();
+        next: (pedidoAtualizado: Pedido) => {
+            const index = this.pedidos.findIndex(p => p.idPedido === pedidoId);
+            if (index !== -1) {
+                this.pedidos[index] = pedidoAtualizado;
+            }
         },
         error: (err: any) => {
-            alert('Erro ao fechar o pedido.');
+            alert('Erro ao mudar o status do pedido.');
             console.error(err);
         }
     });
