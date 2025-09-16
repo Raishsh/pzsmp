@@ -65,7 +65,7 @@ export class MainLayoutComponent implements OnInit {
     if (confirmacao) {
       this.pedidoService.fecharCaixa().subscribe({
         next: () => {
-          alert('Caixa fechado com sucesso! Pedidos pagos permanecem salvos para os relatórios.');
+          alert('Caixa fechado com sucesso! A lista de pedidos foi limpa e todos os pedidos realizados ficam no Relatório Detalhado.');
           window.location.reload(); // Recarrega a aplicação
         },
         error: (err) => {
