@@ -173,13 +173,12 @@ public class PedidoService {
      */
     @Transactional
     public void fecharCaixa() {
-        // 1. CALCULA E SALVA O RELATÓRIO FINAL DO DIA
-       // processarRelatorioDoDia();
+        // 1. Remove todos os dados de pedidos do dia (pagamentos, itens e pedidos)
+        pagamentoRepository.deleteAll();
+        itemPedidoRepository.deleteAll();
+        pedidoRepository.deleteAll();
 
-        // 2. Mantém os pedidos salvos para o Relatório Detalhado; não apagamos dados do dia
-        // Apenas garantimos que as mesas fiquem livres para o próximo atendimento
-
-        // 3. Reseta o sequenciador de número de pedidos para 1
+        // 2. Reseta o sequenciador de número de pedidos para 1
         var seq = sequenciadorRepository.findById(1L).orElse(null);
         if (seq == null) {
             seq = new br.com.sampaiollo.pzsmp.entity.SequenciadorPedido(1L, 1);
@@ -188,7 +187,7 @@ public class PedidoService {
         }
         sequenciadorRepository.save(seq);
 
-        // 4. RESETA O STATUS DE TODAS AS MESAS PARA LIVRE
+        // 3. RESETA O STATUS DE TODAS AS MESAS PARA LIVRE
         List<Mesa> todasAsMesas = mesaRepository.findAll();
         todasAsMesas.forEach(mesa -> mesa.setStatus(StatusMesa.LIVRE));
         mesaRepository.saveAll(todasAsMesas);
