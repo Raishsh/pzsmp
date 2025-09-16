@@ -173,10 +173,13 @@ public class PedidoService {
      */
     @Transactional
     public void fecharCaixa() {
-        // 1. Remove todos os dados de pedidos do dia (pagamentos, itens e pedidos)
-        pagamentoRepository.deleteAll();
-        itemPedidoRepository.deleteAll();
-        pedidoRepository.deleteAll();
+        // 1. Remove todos os pedidos não pagos (mantém pedidos com status PAGO para os relatórios)
+        List<Pedido> todosPedidos = pedidoRepository.findAll();
+        for (Pedido pedido : todosPedidos) {
+            if (pedido.getStatus() != StatusPedido.PAGO) {
+                pedidoRepository.delete(pedido);
+            }
+        }
 
         // 2. Reseta o sequenciador de número de pedidos para 1
         var seq = sequenciadorRepository.findById(1L).orElse(null);
