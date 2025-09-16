@@ -111,7 +111,9 @@ public class PedidoService {
     }
 
     public List<PedidoResponseDto> listarTodos() {
+        List<StatusPedido> excluir = List.of(StatusPedido.PAGO, StatusPedido.ENTREGUE, StatusPedido.CANCELADO);
         return pedidoRepository.findAll().stream()
+                .filter(p -> !excluir.contains(p.getStatus()))
                 .map(PedidoResponseDto::new)
                 .collect(Collectors.toList());
     }
@@ -173,15 +175,8 @@ public class PedidoService {
      */
     @Transactional
     public void fecharCaixa() {
-        // 1. Remove todos os pedidos não pagos (mantém pedidos com status PAGO para os relatórios)
-        List<Pedido> todosPedidos = pedidoRepository.findAll();
-        for (Pedido pedido : todosPedidos) {
-            if (pedido.getStatus() != StatusPedido.PAGO) {
-                pedidoRepository.delete(pedido);
-            }
-        }
-
-        // 2. Reseta o sequenciador de número de pedidos para 1
+        // Mantém todos os pedidos registrados (para o relatório detalhado)
+        // Reseta o sequenciador de número de pedidos para iniciar do 1 no próximo expediente
         var seq = sequenciadorRepository.findById(1L).orElse(null);
         if (seq == null) {
             seq = new br.com.sampaiollo.pzsmp.entity.SequenciadorPedido(1L, 1);
@@ -190,7 +185,7 @@ public class PedidoService {
         }
         sequenciadorRepository.save(seq);
 
-        // 3. RESETA O STATUS DE TODAS AS MESAS PARA LIVRE
+        // Libera todas as mesas para o próximo atendimento
         List<Mesa> todasAsMesas = mesaRepository.findAll();
         todasAsMesas.forEach(mesa -> mesa.setStatus(StatusMesa.LIVRE));
         mesaRepository.saveAll(todasAsMesas);
