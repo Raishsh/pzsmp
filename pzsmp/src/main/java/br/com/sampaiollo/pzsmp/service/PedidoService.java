@@ -176,6 +176,19 @@ public class PedidoService {
     @Transactional
     public void fecharCaixa() {
         // Mantém todos os pedidos registrados (para o relatório detalhado)
+        // Marca pedidos em aberto (PREPARANDO/PRONTO) como CANCELADO para não aparecerem como ativos
+        List<Pedido> todos = pedidoRepository.findAll();
+        List<Pedido> alterados = new ArrayList<>();
+        for (Pedido p : todos) {
+            if (p.getStatus() == StatusPedido.PREPARANDO || p.getStatus() == StatusPedido.PRONTO) {
+                p.setStatus(StatusPedido.CANCELADO);
+                alterados.add(p);
+            }
+        }
+        if (!alterados.isEmpty()) {
+            pedidoRepository.saveAll(alterados);
+        }
+
         // Reseta o sequenciador de número de pedidos para iniciar do 1 no próximo expediente
         var seq = sequenciadorRepository.findById(1L).orElse(null);
         if (seq == null) {
